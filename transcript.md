@@ -1,14 +1,53 @@
 # Intro to JS
 
 ## Course Outline
+ - Introduction
+  - About Me
+  - My Mentors
+  - Course Overview and Goals
  - Why JavaScript
  - What is JavaScript
+  - History
+  - Acenstors
  - Language Fundamentals
+  - Expressions and Statements
+  - Types, Values, and Variables
+  - Control Flow
  - Functions and Scope
+  - What is a Function?
+  - Functions as First Class Values
+  - What is Scope?
+  - Lexical Scope
  - Prototypal Object System
- - Objects Reexamined
+  - What are Objects?
+  - Prototypal vs. Classical
+  - Prototype Chain
+  - 'this'
+  - Pseudoclassical Pattern
+ - Objects Re-examined
+  - Pitfalls of 'this' and 'new'
+  - A better way to Object: Power Constructor
  - Closure
- - Browser Environment 
+  - What is Closure?
+  - Why should I Care?
+  - Ingredients
+  - How to use (Patterns)
+ - Browser Environment
+  - What is a Browser?
+  - ECMAScript
+  - How Code is Executed
+  - Browser APIs
  - Server Environment
+  - Meet Node.js
+  - Node APIs
  - Functional JS
+  - Basics of Functional Programming
+  - List Iteration (forEach)
+  - List Transformation (map)
+  - List Exclusion (filter)
+  - List Composition (reduce)
  - Asynchronous JS
+  - Why Async is so hard
+  - Callbacks
+  - Thunks
+  - Promises
