@@ -83,3 +83,15 @@ We humans have a limited amount of time on this earth, so before we allocate any
 3. JavaScript is everywhere. It's one of the most popular, if not the most popular language in the world, depends on what metric you use, and JavaScript runtimes are spreading to literally everything, from servers, to robots, to watches. This gave rise to "Atwood's Law" which states, "Any application that can be written in JavaScript, will eventually be written in JavaScript." In my opinion, JavaScript is also what gave rise to the concept of a full-stack developer. For the first time, we can write our entire application in one language, and the benefits of simplicity, code resuse, and not having to switch contexts as you go from client to server cannot be overstated.
 
 4. Finally, you should learn JavaScript because GE needs you to learn JavaScript. Not only for the opportunities of using JavaScript with Predix, but I have seen JavaScript in production being used in ways that i've never seen before, and that's not a good thing.
+
+## What is JavaScript
+
+Before we dive into what JavaScript is and is not, we're going to have a brief history lesson. Not only because I personally find it really fascinating, but because it's vital to understand where we came from and how we got here to understand why the langauge is what it is.
+
+### History
+
+### Ancestry
+
+As we've just learned, the parts of Java that JavaScript took are it's syntax and part of its unfortunate name. JavaScript really is a horrible name in my opinion, because it confuses it's relationship with Java and the connotation of script is that it's not a real programming language or that you would never do anything significant with it. It kinda paints a picture of Java's dopey little brother right?
+
+In reality, JavaScript gets its primary features from two pretty obscure languages, first class functions and lexical scope from a language called scheme, and protypal object system from a language called self.
