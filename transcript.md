@@ -51,3 +51,17 @@
   - Callbacks
   - Thunks
   - Promises
+
+## Introduction
+
+### About Me
+
+Hello everyone, and welcome to "Introduction to JavaScript", or alternately titled "How I learned to Stop Worrying and Love the JavaScript." This is the first of our four sessions together, so you might as well get to know me a little better. My name is Miles Dickinson, and my first introduction to JavaScript was when I started developing websites as a sophmore in high school, and I probably couldn't have had a rockier introduction to programming or the language. I had little to no clue what I was doing, and blindly copied and pasted from online, just trying to get my code to work. Needless to say, failure was the norm and thankfully my passion helped me push through those years of frustration. My fundamental mistake was trying to use the language without understanding it. That mistake, however, is not only made by technically uneducated teenagers, it's made by many professionals and is the core reason for any negative connotations you may have or have heard about the language.
+
+JavaScript is famous for both being the world's most misunderstood programming language, and having more good parts and bad parts than any other language. My hope is by the end of this class you'll have a healthy perspective on the language in how you can write expressive, powerful, and secure programs with the good parts, and eliminate the bad parts by simply not using them.
+
+### My Mentors
+
+### Course Outline and Goals
+
+## Why JavaScript
