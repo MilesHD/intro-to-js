@@ -100,18 +100,38 @@ As we've just learned, the parts of Java that JavaScript took are it's syntax an
 
 In reality, JavaScript gets its primary features from two pretty obscure languages. Those features are first class functions and lexical scope from a language called Scheme, and a protypal object system from a language called Self.
 
-## Language Basics
+
+## Syntax
+
+JavaScript's syntax borrows heavily from C and other C-like languages such as Java and Pearl. Everything is case sensitive.
+
 An identifier is the name of a variable, function, property, or function argument. They may be on or more characters in the following format:
  - The first letter must be a ltter, and underscore (_), or a dollar sign ($)
  - All other characters may be letters, underscores, dollar signs, or numbers.
  - use camelCase
+ - everything is case sensitive
 
 JavaScript uses C-style comments for single line (// comment here) and block (/* block of multiple lines */)
 
 ECMAScript 5 introduced 'strict-mode', a differnt parsing and execution model for JavaScript where some of the erratic behavior of ES3 is addressed and errors thrown for unsafe activities.
 
-## Syntax
 ## Variables
+
+Variables are loosely typed, whcih means that it can hold any type of data. Contrary to a strongly typed langauge like Java, where a variable must be declared to only hold a specific type. In JavaScript, a variable is simply a placeholder for a value.
+
+To define a variable, use the 'var' operator followed by a name, which qualifies as a valid identifier by the rules earlier discussed.
+
 ## Data Types
+
+There are five simple data types, also called primitives, in JavaScript.
+- `string`
+- `number`
+- `boolean`
+- `undefined`
+- `null`
+
+The `undefined` type has only one value, which is a special value `undefined`. When a variable is declared using `var`, but not initialized (assigned to a value) it is assigned the value `undefined`.
+
+The `null` type fhas only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` for your bottom value, as it's the one the language uses interally. 
 ## Operators
 ## Statements
