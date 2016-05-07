@@ -129,9 +129,36 @@ There are five simple data types, also called primitives, in JavaScript.
 - `boolean`
 - `undefined`
 - `null`
+And one complex data type: `object`.
+
+The `string` data type represents a sequence of zero or more 16-bit unicode characters. Strings can be delineated by either double quotes (") or single quotes ('). The data type also includes character literals, which consists of a backslash (\) and a series of characters,  where you can represent characters beyond those built into your keyboard. For example, `\n` represents a new line, and \u03a3 displays equivalent to the Greek character Zeta on my screen.
+
+Strings are immutable, meaning once they are created, their values cannot change. To change the string held by a variable, the original string must be destroyed and the variable filled with another string containing the new value. Concatenation is done via the `+` operator as shown in the example below:
+
+```
+var truth = "Miles";
+truth = truth + " Is Great";
+```
+
+The `number` type uses the IEEE-754 format, which is known as a `double` in other languages, and it uses 64 bits to represent both integers and floating-point numbers. Unlike other languages where you have to decide on a number type based on how how big you think the number is going to be, there is only one type in JavaScript. 
+
+```
+var integer = 6;
+var float = 1.1;
+```
+
+The `boolean` type only has two literal values: `true` and `false`. All values can be cast to a boolean, therefore values are said the be either "truthy" or "falsy" depending on whether they resolve to `true` or `false` when converted to a boolean. Many of JavaScript's built in statements, such as the `if` statement perform this conversion automatically.
+
+```
+var message = "Hello World";
+if (message) {
+ console.log("Value is true");
+}
+```
 
 The `undefined` type has only one value, which is a special value `undefined`. When a variable is declared using `var`, but not initialized (assigned to a value) it is assigned the value `undefined`.
 
-The `null` type fhas only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` for your bottom value, as it's the one the language uses interally. 
+The `null` type has only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` for your bottom value, as it's the one the language uses interally. 
+
 ## Operators
 ## Statements
