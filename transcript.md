@@ -99,3 +99,19 @@ Microsoft was watching all of this, and decided they needed to copy Netscape's m
 As we've just learned, the parts of Java that JavaScript took are it's syntax and part of its unfortunate name. JavaScript really is a horrible name in my opinion, because it confuses it's relationship with Java and the connotation of script is that it's not a real programming language or that you would never do anything significant with it. It kinda paints a picture of Java's dopey little brother right?
 
 In reality, JavaScript gets its primary features from two pretty obscure languages. Those features are first class functions and lexical scope from a language called Scheme, and a protypal object system from a language called Self.
+
+## Language Basics
+An identifier is the name of a variable, function, property, or function argument. They may be on or more characters in the following format:
+ - The first letter must be a ltter, and underscore (_), or a dollar sign ($)
+ - All other characters may be letters, underscores, dollar signs, or numbers.
+ - use camelCase
+
+JavaScript uses C-style comments for single line (// comment here) and block (/* block of multiple lines */)
+
+ECMAScript 5 introduced 'strict-mode', a differnt parsing and execution model for JavaScript where some of the erratic behavior of ES3 is addressed and errors thrown for unsafe activities.
+
+## Syntax
+## Variables
+## Data Types
+## Operators
+## Statements
