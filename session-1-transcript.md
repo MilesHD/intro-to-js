@@ -257,13 +257,18 @@ Logical operators can be used to create logical expressions, and include and (&&
 
 Relational operators compare two values in an expression and return the result of that expression as a boolean. These include less-than (<), greater-than (>), less-than-or-equal-to (<=), and greater-than-or-equal-to (>=).
 
-Equality operators
+Equality operators deal with one of the most important operations in programming, determine whether two variables are equivalent. There are two equality operators double equal `==` and triple equal `===`. The difference between is `==` performs conversion on the operands before comparison, and `===` compares the values without conversion. Due to the unpredictable results of type coercion, it's recommended to only use `===`.
 
-Assignment operator
-
-Conditional Operator
-
-Comma Operator
+Finally the assignemnt operator `=` simply assigns the value on the right to the variable on the left
+```
+var x = 2;
+```
+and the comma operator `,` allows execution of more than one operation in a single statement.
+```
+var x = 2,
+    y = 3,
+    z = 4;
+```
 
 ## Flow Control Statements
 
