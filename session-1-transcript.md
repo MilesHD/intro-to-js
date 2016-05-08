@@ -225,8 +225,26 @@ while (y < 10) {
 ## Exercise 1
 
 ## Primitive and Reference Values
+
+Two types of values can be stored in JavaScript variables: primitive values and reference values. 
+
+Primitive values have one of the five primitive data types: undefined, null, boolean, string, and number. They are a fixed size and are stored on the stack in memory. Copying primitive values from one variable to another creates a second copy of the value.
+
+Reference values are objects and are stored on the heap in memory. A variable containing a reference value actually contains just a pointer to the object, not the object itself. The pointer is a variable that holds a memory address. Coying a reference value to anohter variable copies tjust the pointer, so both variables are referencing the same object.
+
+The `typeof` operator determine's a variable's primitive type, whereas the `instaceof` operator determines the reference type of the value.
+
 ## Execution Context and Scope
+
+All variables, primitive and reference, exist within an execution context (scope) that determines the lifetime of the variable and which parts of the code can access it.
+
+In JavaScript, there is a global context and within functions. There is no block scope. Each time a new execution context is entered, it creates a scope chain to search for varaibles and functions. Contexts that are local to a function have access not only to the variables in that scope but also to variables in any containing contexts and the global context. Pay particular attention here, because that is going to come back in a big way tomorrow.
+
+Conversly, the global context and outer functions only have access to variables and function in their context and above and cannot directly acecss any data inside their local contexts. The execution contexts of variables helps determine when they will be released from memory. JavaScript is a garbage-collected programming environment, so the developer does not need to be concerned with memory allocation or reclamation. When values go out of scope, they will be automatically marked for reclamation and will be deleted during the garbage collection process.
+
 ## Functions
+
+
 
 ## Exercise 2
 
