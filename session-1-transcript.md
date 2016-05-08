@@ -2,29 +2,29 @@
 
 ## Outline
  - Introduction
-  - About Me
   - My Mentors
   - Course Overview and Goals
  - Why JavaScript
  - What is JavaScript
   - History
-  - Acenstors
- - Language Fundamentals
-  - Expressions and Statements
-  - Types, Values, and Variables
-  - Control Flow
- - Functions and Scope
-  - What is a Function?
-  - Functions as First Class Values
-  - What is Scope?
-  - Lexical Scope
- - Prototypal Object System
-  - What are Objects?
-  - Prototypal vs. Classical
-  - Prototype Chain
-  - 'this'
-  - Pseudoclassical Pattern
- 
+ - Syntax
+ - Variables
+ - Data Types
+  - Primitive and Reference Values
+  - Primitive Types
+  - Reference Types
+  - Operators
+  - Flow Control Statements
+ - Exercise 1
+ - Execution Context (Scope)
+ - Functions
+ - Exercise 2
+ - Objects
+ - Prototypal vs. Classical
+ - Prototype Chain
+ - 'this'
+ - Pseudoclassical Pattern
+ - Exercise 3
 
 ## Introduction
 
