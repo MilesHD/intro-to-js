@@ -73,23 +73,33 @@ Microsoft decided they needed to copy Netscape's model to stay competitive so th
 
 ## Syntax
 
-JavaScript's syntax borrows heavily from C and other C-like languages such as Java and Pearl. Everything is case sensitive.
+JavaScript's syntax borrows heavily from Java and other C-like languages such as Pearl. The fundamental building blocks of a JavaScript program are statements, which are made of one or more expressions. An expression produces a value, and a statement affects change in the world. By world, I mean the context of your program, and every statement in your program should move the problem state of your world toward its solution state. You name all the variables, functions, properties, and function arguments in your world with identifiers.
 
-An identifier is the name of a variable, function, property, or function argument. They may be on or more characters in the following format:
+An identifier may be one or more characters in the following format:
  - The first letter must be a ltter, and underscore (_), or a dollar sign ($)
  - All other characters may be letters, underscores, dollar signs, or numbers.
  - use camelCase
  - everything is case sensitive
 
-JavaScript uses C-style comments for single line (// comment here) and block (/* block of multiple lines */)
+Also, JavaScript uses C-style comments for single line comments `// comment here` and block level comments
+```
+/* 
+block 
+of multiple lines
+*/
+```
 
-ECMAScript 5 introduced 'strict-mode', a differnt parsing and execution model for JavaScript where some of the erratic behavior of ES3 is addressed and errors thrown for unsafe activities.
+Finally, ECMAScript 5 introduced `strict-mode`, which is a differnt parsing and execution model for JavaScript where some of the troublesome behavior of 3rd edition of the standard is addressed and errors are thrown for unsafe activities. I reccommend you write all your programs in `strict-mode` if possible.
 
 ## Variables
 
-Variables are loosely typed, whcih means that it can hold any type of data. Contrary to a strongly typed langauge like Java, where a variable must be declared to only hold a specific type. In JavaScript, a variable is simply a placeholder for a value.
+Variables in JavaScript are loosely typed, which means that they can hold any type of data. Contrary to a strongly typed langauge like Java, where a variable must be declared to only hold a specific type. In JavaScript, a variable is simply a placeholder for a value.
 
-To define a variable, use the 'var' operator followed by a name, which qualifies as a valid identifier by the rules earlier discussed.
+To define a variable, use the `var` operator followed by a identifier.
+```
+// Define a variable, miles, and initialize it to "rocks"
+var miles = "rocks";
+```
 
 ## Data Types
 
@@ -101,23 +111,23 @@ There are five simple data types, also called primitives, in JavaScript.
 - `null`
 And one complex data type: `object`.
 
-The `string` data type represents a sequence of zero or more 16-bit unicode characters. Strings can be delineated by either double quotes (") or single quotes ('). The data type also includes character literals, which consists of a backslash (\) and a series of characters,  where you can represent characters beyond those built into your keyboard. For example, `\n` represents a new line, and \u03a3 displays equivalent to the Greek character Zeta on my screen.
+The `string` data type represents a sequence of zero or more 16-bit unicode characters. Strings can be delineated by either double quotes `"` or single quotes `'`. You can also use character literals, which are a backslash `\` followed by a series of characters which represent symbols beyond those built into your keyboard. For example, `\n` represents a new line, and `\u03a3` displays equivalent to the Greek character Zeta on your screen.
 
-Strings are immutable, meaning once they are created, their values cannot change. To change the string held by a variable, the original string must be destroyed and the variable filled with another string containing the new value. Concatenation is done via the `+` operator as shown in the example below:
+Strings are immutable, meaning once they are created, their values cannot be changed. To change the string held by a variable, the original string must be destroyed and the variable filled with another string containing the new value. Concatenation is done via the `+` operator as shown in the example below:
 
 ```
 var truth = "Miles";
 truth = truth + " Is Great";
 ```
 
-The `number` type uses the IEEE-754 format, which is known as a `double` in other languages, and it uses 64 bits to represent both integers and floating-point numbers. Unlike other languages where you have to decide on a number type based on how how big you think the number is going to be, there is only one type in JavaScript. 
+The `number` type uses the IEEE-754 format, which is known as a `double` in other languages. It uses 64 bits to represent both integers and floating-point numbers. Unlike other languages where you have to decide on a number type based on how how big you think the number is going to be, there is only one type in JavaScript, so you simply wirte the literal number. 
 
 ```
 var integer = 6;
 var float = 1.1;
 ```
 
-The `boolean` type only has two literal values: `true` and `false`. All values can be cast to a boolean, therefore values are said the be either "truthy" or "falsy" depending on whether they resolve to `true` or `false` when converted to a boolean. Many of JavaScript's built in statements, such as the `if` statement perform this conversion automatically.
+The `boolean` type only has two literal values: `true` and `false`. All values, however, can be cast to a boolean, therefore values are said the be either "truthy" or "falsy" depending on whether they resolve to `true` or `false` after boolean conversion. Many of JavaScript's built in statements, such as the `if` statement perform this conversion automatically.
 
 ```
 var message = "Hello World";
@@ -128,7 +138,7 @@ if (message) {
 
 The `undefined` type has only one value, which is a special value `undefined`. When a variable is declared using `var`, but not initialized (assigned to a value) it is assigned the value `undefined`.
 
-The `null` type has only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` for your bottom value, as it's the one the language uses interally. 
+The `null` type has only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` as a bottom value, as it's the one the language uses interally. 
 
 The `object` type is a dynamic collection of unordered properties, where each property may contain a value of any type. All the Primitive Wrapper, Reference, and Error types have the `object` type as their base.
 
@@ -136,6 +146,13 @@ The `object` type is a dynamic collection of unordered properties, where each pr
 - `String`
 - `Number`
 - `Boolean`
+
+These functions create an object representation of the primitive type that is passed in.
+
+```
+var myString = "cheese";
+
+```
 
 ## Reference Functions
 - `Object`
@@ -170,18 +187,39 @@ Conditional Operator
 
 Comma Operator
 
-## Expressions and Statements
+## Flow Control Statements
 
-Expressions produce a value.
+Flow control is the execution path your program takes depending on the state of your program. The three types of flow control are sequential, conditional, and iterative. 
 
-Statements affect change in the world. By world, I mean the context of your program, and every statement in your program should move the problem state of your world toward its solution state.
+Sequential flow control is the default top-to-bottom execution of your program.
 
-The standard describes several flow-control statements:
-- `if`
-- `for`
-- `while`
-- `break and continue`
+Conditional flow is where one of multiple execution paths are taken due to the result of a conditional expression. JavaScript has the `if` statment, which can be pared with an `else if` and `else` to handle any number of conditions.
 
+```
+var a = 4;
+var b = 3;
+
+if (a > b) {
+ console.log("a is greater than b.");
+} else {
+ console.log("a is less than or equal to b");
+}
+```
+
+Iterative flow is where a block of statements is executed repeatedly until a condition is met. The two primary statements for iteration are the `for` and `while` loop.
+
+```
+var x = 0;
+for (i = 0; i < 10; i += 1) {
+ console.log('JS is da best!');
+}
+
+var y = 0;
+while (y < 10) {
+ console.log('JS is da best!');
+ y += 1;
+}
+```
 
 
 ## Exercise 1
@@ -193,10 +231,13 @@ The standard describes several flow-control statements:
 ## Exercise 2
 
 ## Objects
+
+Objects are a dynamic collection of propeties 
+
 ## `this`
 ## Delegation and the Prototype Chain
 ## Pseudoclassical Pattern
 
 ## Exercise 3
 
-## Conclustion
+## Conclusion
