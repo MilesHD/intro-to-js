@@ -156,14 +156,14 @@ The `object` type is a dynamic collection of unordered properties, where each pr
 
 
 ### Reference Types
-- `String`
-- `Number`
-- `Boolean`
 - `Object`
 - `Array`
 - `Date`
 - `RegExp`
 - `Function`
+- `String`
+- `Number`
+- `Boolean`
 
 These reference functions create objects of the corresponding reference type. Reference types are structures used to group data and functionality together.
 
@@ -224,7 +224,27 @@ They are created using the following pattern:
 var expression = /miles/gi;
 ```
 
+The `Function` type has properties and methods like any other reference type. Unlike many other languages, functions in JavaScript are simply callable objects. There are two ways to define a function: function declarations and function expressions. A function declaration is where function is the first word of the statement, and function expressions is when any other word comes first. For example,
+```
+// function declaration
+function foo() {
+ console.log("fighters");
+}
 
+// function expression
+var foo = function () {
+ console.log("fighters");
+}
+```
+The major difference between the two forms is in how the JavaScript engine loads data into the execution context. Function declarations are read and available in an execution context before any code is executed, whereas function expressions aren't available until the execution reaches that line of code. We'll be going into much more detail on functions later.
+
+Finally the `String`, `Number`, and `Boolean` types are known as primitive wrapper types. They convert a primitive value to it's corresponding reference type, which contain useful methods for operating on the data. This conversion can be done explicitly, by calling the function with the `new` keyword, but is also done implicitly by the language.
+
+For example, the perferred way to convert a string to uppercase is to the use `String` type's built in method `.toUpperCase`.
+```
+var upperCase = "miles".toUpperCase(); // "MILES"
+```
+Notice that I did not need to convert the string primitive "miles" to a `String` reference type before being able to use the `toUpperCase` method, JavaScript takes care of that for me.
 
 
 ## Operators
