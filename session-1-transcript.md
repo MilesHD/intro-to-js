@@ -306,6 +306,10 @@ while (y < 10) {
 
 ## Exercise 1
 
+Our first exercise is pretty straightforward. I have defiend five tasks which give you the pseudocode, and you need to implement them in JavaScript. You have five minutes, and I recommend looking back through the slides if you get stuck on syntax.
+
+## Exercise 1 Solution
+
 ## Execution Context (Scope)
 
 All variables, primitive and reference, exist within an execution context (scope) that determines the lifetime of the variable and which parts of the code can access it.
