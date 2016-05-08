@@ -1,6 +1,6 @@
-# Intro to JS
+# Intro to JS: Session 1
 
-## Course Outline
+## Outline
  - Introduction
   - About Me
   - My Mentors
