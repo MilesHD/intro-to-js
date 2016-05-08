@@ -320,7 +320,13 @@ Conversly, the global context and outer functions only have access to variables 
 
 ## Functions
 
+Functions are the best part of JavaScript. They combine three really powerful language features that were never before combined in a single language. Functions as first class values, lexical scope, and the ability to nest functions.
 
+I always disliked the term "first class value", becuase i got hung up on this unknown classification system, when all it really means is that anything you can do with a regular object, or a string, or any other value, you can do with a function. That means you can assign a function to a variable, assign it to the property of an object (which gets called a method), pass it as an argument to another function, and return it from a function. This allows us to create "higher-order" functions, which are functions at take a function, do work, and return a function. This is an immensely powerful pattern for creating a modular and expressive program.
+
+As we discussed earlier, lexical scope sets the scope of a variable so that it may only be called from within the block of code in which it is defined. In JavaScript, the only blocks that have scope are functions. Therefore, nesting functions with lexical scope allow us to define local scopes within a larger function scope. This has many uses, and we'll talk about this feature in greater depth when we get into closure next session.
+
+Since Functions are objects, they have methods like any other object. Two such methods are `call` and `apply`, which allow you to invoke a function, and pass in an object that get assigned to the invocation object's `this` value, and any number of additional arguments. We'll get to `this` when we discuss objects after the next exercise, and the difference between the two methods is `call` takes its additional arguments as a comman-separated list, and `apply` takes an array.
 
 ## Exercise 2
 
