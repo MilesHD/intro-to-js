@@ -103,6 +103,18 @@ var miles = "rocks";
 
 ## Data Types
 
+### Primitive and Reference Values
+
+Two types of values can be stored in JavaScript variables: primitive values and reference values. 
+
+Primitive values have one of the five primitive data types: undefined, null, boolean, string, and number. They are a fixed size and are stored on the stack in memory. Copying primitive values from one variable to another creates a second copy of the value.
+
+Reference values are objects and are stored on the heap in memory. A variable containing a reference value actually contains just a pointer to the object, not the object itself. The pointer is a variable that holds a memory address. Coying a reference value to anohter variable copies tjust the pointer, so both variables are referencing the same object.
+
+The `typeof` operator determine's a variable's primitive type, whereas the `instaceof` operator determines the reference type of the value.
+
+### Primitive Types
+
 There are five simple data types, also called primitives, in JavaScript.
 - `string`
 - `number`
@@ -142,32 +154,78 @@ The `null` type has only one value, a special value `null`. A `null` value is te
 
 The `object` type is a dynamic collection of unordered properties, where each property may contain a value of any type. All the Primitive Wrapper, Reference, and Error types have the `object` type as their base.
 
-## Primitive Wrapper Functions
+
+### Reference Types
 - `String`
 - `Number`
 - `Boolean`
-
-These functions create an object representation of the primitive type that is passed in.
-
-```
-var myString = "cheese";
-
-```
-
-## Reference Functions
 - `Object`
 - `Array`
 - `Date`
 - `RegExp`
 - `Function`
 
-## Errors
-- `Error`
-- `RangeError`
-- `ReferenceError`
-- `SyntaxError`
-- `TypeError`
-- `URIError`
+These reference functions create objects of the corresponding reference type. Reference types are structures used to group data and functionality together.
+
+The `Object` type is a dynamic collection of properties and is the base for all the other reference types.
+
+It has a number of built in methods. 
+- `isPrototypeOf` - determines if the object is a prototype of another object.
+- `propertyIsEnumerable` - indicates if the given property can be enumerated (retrived using a for-in loop)
+- `hasOwnProperty` - indicates if the given property exists on the object instance (not on the prototype)
+
+The perferred way to create an object is with an object literal syntax:
+```
+var obj = {
+ prop1: 'myProperty',
+ prop2: function () {
+  console.log("I am also a property, sometimes called a method");
+ }
+};
+```
+
+The `Array` type is an ordered list of data that is dynamically sized and can hold any type of value.
+
+It has a number of built in methods.
+- `push` - add item to end of array.
+- `pop` - remove and return item from end of array.
+- `shift` - remove and return item from beginning of array.
+- `unshift` - add item to beginning of array.
+- `slice`
+- `splice`
+
+Since `instanceof` returns `object` when testing an array, we need to use Array.isArray method to determine if an array is an array.
+
+The preferred way to create an array is with array literal syntax:
+```
+var arr = ['js', 'is', 'fun'];
+```
+
+The `Date` type stores dates as the number of milliseconds that have passed since midnight on January 1, 1970 UTC.
+
+To create a new `Date` object, use the new operator with the Date reference function.
+```
+var now = new Date();
+```
+
+They type comes with a number of formatting methods:
+ - `getDay` - returns the date's day of the week, where 0 is sunday and 6 is saturday.
+ - `getHours` - returns the date's hours as a number between 0 and 59.
+ - `getMinutes` - returns the date's minutes as a number.
+ - `getSeconds` - returns the date's seconds as a number.
+
+JavaScript supports regular expressions through the `RegExp` type. A regular expression is a  special string for describing a search pattern.
+
+They are created using the following pattern:
+```
+// Pattern
+// var expression = /pattern/flags
+
+var expression = /miles/gi;
+```
+
+
+
 
 ## Operators
 
@@ -221,20 +279,9 @@ while (y < 10) {
 }
 ```
 
-
 ## Exercise 1
 
-## Primitive and Reference Values
-
-Two types of values can be stored in JavaScript variables: primitive values and reference values. 
-
-Primitive values have one of the five primitive data types: undefined, null, boolean, string, and number. They are a fixed size and are stored on the stack in memory. Copying primitive values from one variable to another creates a second copy of the value.
-
-Reference values are objects and are stored on the heap in memory. A variable containing a reference value actually contains just a pointer to the object, not the object itself. The pointer is a variable that holds a memory address. Coying a reference value to anohter variable copies tjust the pointer, so both variables are referencing the same object.
-
-The `typeof` operator determine's a variable's primitive type, whereas the `instaceof` operator determines the reference type of the value.
-
-## Execution Context and Scope
+## Execution Context (Scope)
 
 All variables, primitive and reference, exist within an execution context (scope) that determines the lifetime of the variable and which parts of the code can access it.
 
