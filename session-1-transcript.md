@@ -28,7 +28,7 @@
 
 ## Introduction
 
-Hello everyone, and welcome to "Introduction to JavaScript", or alternately titled "How I learned to Stop Worrying and Love the JavaScript." My name is Miles Dickinson, and my first introduction to JavaScript was when I started developing websites as a sophmore in high school. My first few years with the language was a struggle, because I made a fundamental mistake that is made by many professional programmers today. I tried to use the language without understanding it. That, I believe, is the core reason for many negative connotations you may have or have heard about JavaScript.
+Hello everyone, and welcome to "Introduction to JavaScript", or alternately titled "How I learned to Stop Worrying and Love the JavaScript." My name is Miles Dickinson, and my first introduction to JavaScript as a sophmore in high school when I started developing websites. My first few years with the language was a struggle, because I made a fundamental mistake that is made by many professional programmers today. I tried to use the language without understanding it. That is the core reason for many negative things you may think or have heard about JavaScript.
 
 JavaScript is famous for both being the world's most misunderstood programming language, and having more good parts and bad parts than any other language. Over the next four sessions, I am going to teach a combination of the good parts, and the parts you will most likely encounter in the wild. There are some parts of the languge I will not be covering both for the sake of time, and you'll never want to program with them anyway. But as you continue your education in JavaScript I encourage to learn about them for learning why those features are dangerous is important.
 
@@ -38,17 +38,31 @@ I want to take a second to introduce you to three people you should absolutely k
 
 ### Course Outline and Goals
 
-Like I said, this is a four session class, and each session will have three 15 minute lectures, and three exercies.
+This is a four session class, and each session will have three 15 minute lectures, and three exercies.
 
 Some of the exercies I expect you to complete in 5 minutes, some I don't, and that's okay. I'll be capping exercise time at exactly 5 minutes to stay on schedule, and we will review the solution before starting the next lecture. I also highly encourage you to revisit the exercises later today to reinforce what you've learned.
 
-There will be 30 minutes alloted for questions. If you have a question, raise your hand if you're hear in person, and if you're remote please have your line on mute and ask questions through the chat.
+I've reserved the conference room for an extra 30 minutes for questions. If you have a question, raise your hand if you're hear in person, and if you're remote please have your line on mute and ask questions through the chat.
 
 Today, in session 1 we're going to discuss what JavaScript is, why we should care, and dive into language fundamentals. We'll then examine, functions, scope, and wrap up with a look at the object system.
 
-## Why JavaScript
+## What is JavaScript
 
-We humans have a limited amount of time on this earth, so before we allocate any of that precious time to learning JavaScript, it's important to ask why.
+Contrary to it's name, JavaScript has almost nothing to do with Java. As far as mechanics of the language, Java and JavaScript couldn't be more fundamentally different. JavaScript is a mix of Java Syntax, first class functions and lexical scope from Scheme, a protypal object system from Self, and a couple of the creators own ideas. But how did this bizarre language come to be?
+
+### History
+
+Let's jump back to 1995. Netscape made Navigator, one of the first popular web browsers, and they wanted to add interactivity to the next version, Navigator 2. They hired Brendan Eich for the job and he wanted to write a scheme interpreter, but Netscape thought the syntax was too weird and wanted him to use somthing more familiar like Visual Basic or Java. The langauge he wrote was a mix of three languages, Java because he had to, Scheme, and Self, and in about 10 days he had completed the first version of LiveScript. To give you a basis of comparison, smalltalk80, considered one of the best designed languages of all time, was designed in about 8 years. At the same time, Sun and Netscape realized they need to work together against Microsoft, so Microsoft wouldn't play them against eachother. But the biggest area of contention between the two companies was what to do with LiveScript. Sun's position was to put Java in Netscape's browser and kill Livescript. Netscape wanted a simpler programming model to capture a wider developer base. They were at an impasse, when the suggestion came, possibly as a joke, "Lets change the name to JavaScript." And it worked. And even though they tried to kill language, Sun claimed the copyright to JavaScript and gave Netscape a lifetime license.
+
+Microsoft was watching all of this, and decided they needed to copy Netscape's model to stay competitive so they reverse engineered the JavaScript engine and called it JScript. Netscape, alarmed the language was being embraced and extended, decided it needed to be standardized, and ended up of all places at the European Computer Manufacturer's Association. The standards committe, which actually had a significant presence from Microsoft, created the standard, but couldn't call it JavaScript, so they published it with the working title ECMAScript. So now we have JavaScript, JScript, and ECMAScript are all the same language.
+
+### Ancestry
+
+As we've just learned, the parts of Java that JavaScript took are it's syntax and part of its unfortunate name. JavaScript really is a horrible name in my opinion, because it confuses it's relationship with Java and the connotation of script is that it's not a real programming language or that you would never do anything significant with it. It kinda paints a picture of Java's dopey little brother right?
+
+In reality, JavaScript gets its primary features from two pretty obscure languages. Those features are first class functions and lexical scope from a language called Scheme, and a protypal object system from a language called Self.
+
+## Why JavaScript
 
 1. JavaScript is the language of the browser. Whether you love it or hate it, like it or not, if you want to make a web application that does anything interesting, you need to use JavaScript. Even if you're using a transpiler, which lets you write in another language like Java and have it transformed to JavaScript, you still need to understand JavaScript or you're going to be in a world of pain of suffering and have no idea why. A bug is simply a manifestation of confusion in your program. It's where you think your program is doing something different than it is actually doing. So if you don't understand what the transpiled code is doing, how can you ever expect your programs to work?
 
@@ -58,21 +72,7 @@ We humans have a limited amount of time on this earth, so before we allocate any
 
 4. Finally, you should learn JavaScript because GE needs you to learn JavaScript. Not only for the opportunities of using JavaScript with Predix, but I have seen JavaScript in production being used in ways that i've never seen before, and that's not a good thing.
 
-## What is JavaScript
 
-Before we dive into what JavaScript is and is not, we're going to have a brief history lesson. Not only because I personally find it really fascinating, but because it's vital to understand where we came from and how we got here to understand why the langauge is what it is.
-
-### History
-
-Let's jump back to 1995. Netscape made Navigator, one of the first popular web browsers, and they wanted to add interactivity to the next version, Navigator 2. They hired Brendan Eich for the job and he wanted to write a scheme interpreter, but Netscape thought the syntax was too weird and wanted him to use somthing more familiar like Visual Basic or Java. The langauge he wrote was a mix of three languages, Java because he had to, Scheme, and Self, and in about 10 days he had completed the first version of LiveScript. To give you a basis of comparison, smalltalk80, considered one of the best designed languages of all time, was designed in about 8 years. If Netscape had been a better managed company, they may have taken a few more weeks to work out some of the kinks, but instead they shipped it as is. At the same time, Sun and Netscape realized they need to work together against Microsoft, so Microsoft wouldn't play them against eachother. But the biggest area of contention between the two companies was what to do with LiveScript. Sun's position was to put Java in Netscape's browser and kill Livescript. Netscape wanted a simpler programming model to capture a wider developer base. They were at an impasse, when the suggestion came, possibly as a joke, "Lets change the name to JavaScript." And it worked. And even though they tried to kill language, Sun claimed the copyright to JavaScript and gave Netscape a lifetime license.
-
-Microsoft was watching all of this, and decided they needed to copy Netscape's model to stay competitive so they reverse engineered the JavaScript engine and called it JScript. Netscape, alarmed the language was being embraced and extended, decided it needed to be standardized, and ended up of all places at the European Computer Manufacturer's Association. The standards committe, which actually had a significant presence from Microsoft, created the standard, but couldn't call it JavaScript, so they published it with the working title ECMAScript. So now we have JavaScript, JScript, and ECMAScript are all the same language.
-
-### Ancestry
-
-As we've just learned, the parts of Java that JavaScript took are it's syntax and part of its unfortunate name. JavaScript really is a horrible name in my opinion, because it confuses it's relationship with Java and the connotation of script is that it's not a real programming language or that you would never do anything significant with it. It kinda paints a picture of Java's dopey little brother right?
-
-In reality, JavaScript gets its primary features from two pretty obscure languages. Those features are first class functions and lexical scope from a language called Scheme, and a protypal object system from a language called Self.
 
 
 ## Syntax
