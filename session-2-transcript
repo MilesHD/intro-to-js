@@ -1,0 +1,27 @@
+- Objects Re-examined
+  - Pitfalls of 'this' and 'new'
+  - A better way to Object: Power Constructor
+ - Closure
+  - What is Closure?
+  - Why should I Care?
+  - Ingredients
+  - How to use (Patterns)
+ - Browser Environment
+  - What is a Browser?
+  - ECMAScript
+  - How Code is Executed
+  - Browser APIs
+ - Server Environment
+  - Meet Node.js
+  - Node APIs
+ - Functional JS
+  - Basics of Functional Programming
+  - List Iteration (forEach)
+  - List Transformation (map)
+  - List Exclusion (filter)
+  - List Composition (reduce)
+ - Asynchronous JS
+  - Why Async is so hard
+  - Callbacks
+  - Thunks
+  - Promises
