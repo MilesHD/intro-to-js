@@ -157,7 +157,36 @@ The `object` type is a dynamic collection of unordered properties, where each pr
 - `URIError`
 
 ## Operators
+
+Operators can be used to manipulate data. The main types of operators are arithmetic, logical, relational, and equality operators.
+
+Arithmetic operators include addition (+), subtraction (-), multiplication (*), division (*), and modulus(%), which returns the remainder of dividing the two operands.
+
+Logical operators can be used to create logical expressions, and include and (&&), or (||), and not (!).
+
+Relational operators compare two values in an expression and return the result of that expression as a boolean. These include less-than (<), greater-than (>), less-than-or-equal-to (<=), and greater-than-or-equal-to (>=).
+
+Equality operators
+
+Assignment operator
+
+Conditional Operator
+
+Comma Operator
+
 ## Expressions and Statements
+
+Expressions produce a value.
+
+Statements affect change in the world. By world, I mean the context of your program, and every statement in your program should move the problem state of your world toward its solution state.
+
+The standard describes several flow-control statements:
+- `if`
+- `for`
+- `while`
+- `break and continue`
+
+
 
 ## Exercise 1
 
@@ -169,4 +198,9 @@ The `object` type is a dynamic collection of unordered properties, where each pr
 
 ## Objects
 ## `this`
-## 
+## Delegation and the Prototype Chain
+## Pseudoclassical Pattern
+
+## Exercise 3
+
+## Conclustion
