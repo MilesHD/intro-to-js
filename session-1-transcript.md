@@ -24,33 +24,7 @@
   - Prototype Chain
   - 'this'
   - Pseudoclassical Pattern
- - Objects Re-examined
-  - Pitfalls of 'this' and 'new'
-  - A better way to Object: Power Constructor
- - Closure
-  - What is Closure?
-  - Why should I Care?
-  - Ingredients
-  - How to use (Patterns)
- - Browser Environment
-  - What is a Browser?
-  - ECMAScript
-  - How Code is Executed
-  - Browser APIs
- - Server Environment
-  - Meet Node.js
-  - Node APIs
- - Functional JS
-  - Basics of Functional Programming
-  - List Iteration (forEach)
-  - List Transformation (map)
-  - List Exclusion (filter)
-  - List Composition (reduce)
- - Asynchronous JS
-  - Why Async is so hard
-  - Callbacks
-  - Thunks
-  - Promises
+ 
 
 ## Introduction
 
@@ -160,5 +134,39 @@ The `undefined` type has only one value, which is a special value `undefined`. W
 
 The `null` type has only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` for your bottom value, as it's the one the language uses interally. 
 
+The `object` type is a dynamic collection of unordered properties, where each property may contain a value of any type. All the Primitive Wrapper, Reference, and Error types have the `object` type as their base.
+
+## Primitive Wrapper Functions
+- `String`
+- `Number`
+- `Boolean`
+
+## Reference Functions
+- `Object`
+- `Array`
+- `Date`
+- `RegExp`
+- `Function`
+
+## Errors
+- `Error`
+- `RangeError`
+- `ReferenceError`
+- `SyntaxError`
+- `TypeError`
+- `URIError`
+
 ## Operators
-## Statements
+## Expressions and Statements
+
+## Exercise 1
+
+## Primitive and Reference Values
+## Execution Context and Scope
+## Functions
+
+## Exercise 2
+
+## Objects
+## `this`
+## 
