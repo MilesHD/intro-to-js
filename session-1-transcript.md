@@ -312,27 +312,27 @@ Our first exercise is pretty straightforward. I have defiend five tasks which gi
 
 ## Execution Context (Scope)
 
-All variables, primitive and reference, exist within an execution context (scope) that determines the lifetime of the variable and which parts of the code can access it.
+All variables, primitive and reference, exist within an execution context (scope), which determines the lifetime of the variable and which parts of the code can access it.
 
-In JavaScript, there is a global context and within functions. There is no block scope. Each time a new execution context is entered, it creates a scope chain to search for varaibles and functions. Contexts that are local to a function have access not only to the variables in that scope but also to variables in any containing contexts and the global context. Pay particular attention here, because that is going to come back in a big way tomorrow.
+JavaScript has lexical scope, and only within functions, not blocks. Scopes that are local to a function have access not only to the variables in that scope but also to variables in any outer scope, all the way up to the global scope. That accessibility known as the scope chain.
 
-Conversly, the global context and outer functions only have access to variables and function in their context and above and cannot directly acecss any data inside their local contexts. The execution contexts of variables helps determine when they will be released from memory. JavaScript is a garbage-collected programming environment, so the developer does not need to be concerned with memory allocation or reclamation. When values go out of scope, they will be automatically marked for reclamation and will be deleted during the garbage collection process.
+The scope of a variable helps determine when it will be released from memory. JavaScript is a garbage-collected programming environment, so the developer does not need to be concerned with memory allocation or reclamation. When values go out of scope, they will be automatically marked for reclamation and will be deleted during the garbage collection process.
 
 ## Functions
 
 Functions are the best part of JavaScript. They combine three really powerful language features that were never before combined in a single language. Functions as first class values, lexical scope, and the ability to nest functions.
 
-I always disliked the term "first class value", becuase i got hung up on this unknown classification system, when all it really means is that anything you can do with a regular object, or a string, or any other value, you can do with a function. That means you can assign a function to a variable, assign it to the property of an object (which gets called a method), pass it as an argument to another function, and return it from a function. This allows us to create "higher-order" functions, which are functions at take a function, do work, and return a function. This is an immensely powerful pattern for creating a modular and expressive program.
+I always disliked the term "first class value", becuase i got hung up on this unknown classification system, when all it really means is that anything you can do with a regular object, or a string, or any other value, you can do with a function. That means you can assign a function to a variable, assign it to the property of an object (which gets called a method), pass it as an argument to another function, and return it from a function.
 
 As we discussed earlier, lexical scope sets the scope of a variable so that it may only be called from within the block of code in which it is defined. In JavaScript, the only blocks that have scope are functions. Therefore, nesting functions with lexical scope allow us to define local scopes within a larger function scope. This has many uses, and we'll talk about this feature in greater depth when we get into closure next session.
 
-Since Functions are objects, they have methods like any other object. Two such methods are `call` and `apply`, which allow you to invoke a function, and pass in an object that get assigned to the invocation object's `this` value, and any number of additional arguments. We'll get to `this` when we discuss objects after the next exercise, and the difference between the two methods is `call` takes its additional arguments as a comman-separated list, and `apply` takes an array.
+Since Functions are objects, they have methods like any other object. Two such methods are `call` and `apply`, which allow you to invoke a function, and pass in an object that get assigned to the invocation object's `this` value, and any number of additional arguments. We'll get to `this` when we discuss objects after the next exercise.
 
 ## Exercise 2
 
 ## Objects
 
-Objects are a dynamic collection of propeties, each of which may contain any value. The biggeset misunderstanding in JavaScript is that it's object system is similar to Java, where you create an object by instantiating a class. Class instantiation is a copy operation, where a brand new object is created with all the properties that were defiend in the blueprint, the class.
+Objects are a dynamic collection of properties, each of which may contain any value. The biggeset misunderstanding in JavaScript is that it's object system is similar to Java, where you create an object by instantiating a class. Class instantiation is a copy operation, where a brand new object is created with all the properties that were defiend in the blueprint, the class.
 
 ### Protypal
 
@@ -342,7 +342,7 @@ JavaScript does not have classes and it does not copy. JavaScript has a protypal
 
 A feature commonly used with object systems in JavaScript is `this`. `this` is a way of implicitly "passing along" an object reference, and it can allow for cleaner api design and code reuse. `this` is probably one of the more confusing parts of the langauge, because it does not refer to the currently executing function or the function's lexical scope. `this`'s value is bound at runtime, not author time and it depends on how the function is called.
 
-To determine how a function is called, you need to inspect the call-site, the location in code where a function is called. Upon inspection, there a 4 rules for determing the value of this. Those rules, in order of priority are:
+To determine how a function is called, you need to inspect the call-site. Upon inspection, there a 4 rules for determing the value of `this`. Those rules, in order of priority are:
 
 1. New binding. This is where you make a constructor call by calling `new Function()`. The `new` operator creates a new object and assigns this to the value within the function body.
  
