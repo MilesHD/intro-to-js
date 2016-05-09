@@ -1,3 +1,5 @@
+// Exercise 3: Pseudoclassical Pattern
+
 // 1. Create an Pet constructor function that takes a name and type. Create a method named "speak" and console.log a funny greeting with the pets name.
 
 function Pet(name, type) {

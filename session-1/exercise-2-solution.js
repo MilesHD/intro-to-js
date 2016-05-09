@@ -1,3 +1,5 @@
+// Exercise 2: Functions and Scope 
+
 // 1. Write a function named 'add' that takes 2 arguments, 
 // adds them together and returns the result.
 

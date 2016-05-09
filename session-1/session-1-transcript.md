@@ -20,8 +20,7 @@
  - Functions
  - Exercise 2
  - Objects
- - Prototypal vs. Classical
- - Prototype Chain
+ - Prototypes and Delegation
  - 'this'
  - Pseudoclassical Pattern
  - Exercise 3
@@ -73,14 +72,15 @@ Microsoft decided they needed to copy Netscape's model to stay competitive so th
 
 ## Syntax
 
-JavaScript's syntax borrows heavily from Java and other C-like languages such as Pearl. The fundamental building blocks of a JavaScript program are statements, which are made of one or more expressions. An expression produces a value, and a statement affects change in the world. By world, I mean the context of your program, and every statement in your program should move the problem state of your world toward its solution state. You name all the variables, functions, properties, and function arguments in your world with identifiers.
+The fundamental building blocks of a JavaScript program are statements, which are made of one or more expressions. An expression produces a value, and a statement affects change in the world. By world, I mean the context of your program, and every statement in your program should move the problem state of your world toward its solution state. You name all the variables, functions, properties, and function arguments in your world with identifiers.
 
 An identifier may be one or more characters in the following format:
- - The first letter must be a ltter, and underscore (_), or a dollar sign ($)
+ - The first letter must be a letter, and underscore, or a dollar sign.
  - All other characters may be letters, underscores, dollar signs, or numbers.
  - use camelCase
  - everything is case sensitive
 
+JavaScript's syntax borrows heavily from Java and other C-like languages such as Pearl. 
 Also, JavaScript uses C-style comments for single line comments `// comment here` and block level comments
 ```
 /* 
@@ -152,9 +152,6 @@ The `undefined` type has only one value, which is a special value `undefined`. W
 
 The `null` type has only one value, a special value `null`. A `null` value is technically an empty object pointer, so the `typeof` operator, which determines the data type of a value, thinks it's type is an object. Due to this quirk, I recommend only using `undefined` as a bottom value, as it's the one the language uses interally. 
 
-The `object` type is a dynamic collection of unordered properties, where each property may contain a value of any type. All the Primitive Wrapper, Reference, and Error types have the `object` type as their base.
-
-
 ### Reference Types
 - `Object`
 - `Array`
@@ -191,8 +188,6 @@ It has a number of built in methods.
 - `pop` - remove and return item from end of array.
 - `shift` - remove and return item from beginning of array.
 - `unshift` - add item to beginning of array.
-- `slice`
-- `splice`
 
 Since `instanceof` returns `object` when testing an array, we need to use Array.isArray method to determine if an array is an array.
 
