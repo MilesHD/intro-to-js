@@ -16,7 +16,7 @@ function applyFn(fn, x, y) {
 }
 
 // Verify
-console.log(add, 5, 3); // 8
+console.log(applyFn(add, 5, 3)); // 8
 
 // 3. Write a function named add5 that returns a function, which you can call at a
 // later time with an argument, and it will add 5 to the argument and return the sum.
@@ -24,7 +24,7 @@ console.log(add, 5, 3); // 8
 function add5() {
   return function (x) {
     return add(x, 5);
-  }
+  };
 }
 
 // Verify
