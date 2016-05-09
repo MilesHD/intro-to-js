@@ -320,17 +320,60 @@ Conversly, the global context and outer functions only have access to variables 
 
 ## Functions
 
+Functions are the best part of JavaScript. They combine three really powerful language features that were never before combined in a single language. Functions as first class values, lexical scope, and the ability to nest functions.
 
+I always disliked the term "first class value", becuase i got hung up on this unknown classification system, when all it really means is that anything you can do with a regular object, or a string, or any other value, you can do with a function. That means you can assign a function to a variable, assign it to the property of an object (which gets called a method), pass it as an argument to another function, and return it from a function. This allows us to create "higher-order" functions, which are functions at take a function, do work, and return a function. This is an immensely powerful pattern for creating a modular and expressive program.
+
+As we discussed earlier, lexical scope sets the scope of a variable so that it may only be called from within the block of code in which it is defined. In JavaScript, the only blocks that have scope are functions. Therefore, nesting functions with lexical scope allow us to define local scopes within a larger function scope. This has many uses, and we'll talk about this feature in greater depth when we get into closure next session.
+
+Since Functions are objects, they have methods like any other object. Two such methods are `call` and `apply`, which allow you to invoke a function, and pass in an object that get assigned to the invocation object's `this` value, and any number of additional arguments. We'll get to `this` when we discuss objects after the next exercise, and the difference between the two methods is `call` takes its additional arguments as a comman-separated list, and `apply` takes an array.
 
 ## Exercise 2
 
 ## Objects
 
-Objects are a dynamic collection of propeties 
+Objects are a dynamic collection of propeties, each of which may contain any value. The biggeset misunderstanding in JavaScript is that it's object system is similar to Java, where you create an object by instantiating a class. Class instantiation is a copy operation, where a brand new object is created with all the properties that were defiend in the blueprint, the class.
 
-## `this`
-## Delegation and the Prototype Chain
-## Pseudoclassical Pattern
+### Protypal
+
+JavaScript does not have classes and it does not copy. JavaScript has a protypal object system, an entirely differnt model than Java's classical model. In JavaScript, objects are linked to other objects in a chain called the "protype chain." It's similar to a linked list if you're familar with that data strucutre. Each object has an internal `[[Prototype]]` property, which contains a reference to the next link in its prototype chain. If you access a property on an object, and the object does not have the property, it will look for the property on the next object in its prototype chain. This model is of sharing functionality is called "delegation", and it's actually a much more flexibile way of sharing functionality than inheritance in Java. In Java, you need to create rigid taxonomies of types for your object system, at the beginning of your project when you have the least understanding of your problem. In JavaScript, all you need to do is change what `[[Prototype]]` points at to change an object's functionality.
+
+### this
+
+A feature commonly used with object systems in JavaScript is `this`. `this` is a way of implicitly "passing along" an object reference, and it can allow for cleaner api design and code reuse. `this` is probably one of the more confusing parts of the langauge, because it does not refer to the currently executing function or the function's lexical scope. `this`'s value is bound at runtime, not author time and it depends on how the function is called.
+
+To determine how a function is called, you need to inspect the call-site, the location in code where a function is called. Upon inspection, there a 4 rules for determing the value of this. Those rules, in order of priority are:
+
+1. New binding. This is where you make a constructor call by calling `new Function()`. The `new` operator creates a new object and assigns this to the value within the function body.
+ 
+2. Explicit binding. This is where you use the function's `call` or `apply` methods to invoke the function and pass in a value for `this` as the first argument.
+
+3. Implicit binding. This is where you call a method on an object. For example, the `myObj.method()` call will assign the value `myObj` to the `this` value within `method`'s function body.
+
+4. Default binding. The default binding is where the function is called normally, `foo()`. In ES5 strict mode, `this` will be set to undefined, and set to the global object otherwise.
+
+### Pseudoclassical Pattern
+
+The Pseudoclassical Pattern is one of the most popular patterns for creating object systems. It's where you define a "constructor" function for your reference type which assigns data to properties on your object, and then define methods for your type on the type's prototype object. You then call the constructor function with the `new` keyword and a new object with the constructed data properties and a `[[Protype]]` link to the object you assigned methods to is created.
+
+The syntax for the pattern is as follows:
+```
+// Type definiton
+function Person(name, age, job) {
+ this.name = name;
+ this.age = age;
+}
+
+Person.prototype.sayHi = function () {
+ console.log("Hi everybody");
+ console.log("Hi " + this.name);
+}
+
+// Object creation
+var person1 = new Person("Dr. Nick", 44);
+person1.sayHi(); // "Hi everybody" "Hi Dr. Nick"
+
+```
 
 ## Exercise 3
 
