@@ -58,7 +58,11 @@ Closure is one of the most important breakthroughs in language design of all tim
 
 ### What is Closure?
 
-A closure is simply a function with state. Closure enables data hiding and encapsulating behavior. Closure in JavaScript is possible due to three concepts brought together for the first time: First Class Functions, Lexical Scope, and Nested Functions.
+A closure is a function that has access to variables from another function's scope. This is often accomplished by creating a function inside a function. Even if the inner function has been returned, and is being used elsewhere, it has access to the variable it closed over.
+
+When a function is called, an execution context is created, and its scope chain is created. THe activation object for the function is initialized with the values for `arguments` and any named arguments. The outer function's activation object is the 2nd object in the scope chain, and so on for all containing functions until the chain terminates with the global object. As the function executes, variables are looked up in the scope chain.
+
+Closure enables data hiding and encapsulating behavior. Closure in JavaScript is possible due to three concepts brought together for the first time: First Class Functions, Lexical Scope, and Nested Functions.
 
 ```
 var globalArr = [1,2,3,4,5]
