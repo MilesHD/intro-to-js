@@ -124,9 +124,17 @@ JavaScript runs in the browser, which can be thought of in four high level compo
 
 The JavaScript runtime is the software component that physically executes our JavaScript. It is a single-threaded model, meaning only one thing can be happening at a time, there are no threads. The runtime has two primary components, the heap and the stack. The heap handles memory allocation for objects, and the stack is a data structure that keeps of where we currently are in our program's execution. This is done by pushing and popping, like an array, execution contexts on and off the stack.
 
-Web apis include the Browser Object Model (BOM) and the Document Object Model (DOM).
+JavaScript implementations have an event-driven, asynchronous programming model. We're used to synchronous code, where we write an operation, and that operation completes before we move on to the next statement. 
 
-The callback queue
+Web apis include the Browser Object Model (BOM) and the Document Object Model (DOM). WebApis push your callback onto the task callback queue.
+
+The callback queue is a data structure that receives callbacks invoked from an api. The callbacks wait in order int
+
+The event loop pushes the first callback from the callback queue on to the stack, if the stack is empty.
+
+blocking code is "code that is slow". Network calls, video processing, etc. The number one rule of event driven programming, don't block the stack. When you block the stack, you can't do anything else, not scoll the page, click on a button, as far as your user is concerned, the application is broken. And they're right.
+
+The browser is more than just the runtime, they offer apis which can do tasks concurrently. 
 
 ```
 Call Stack
