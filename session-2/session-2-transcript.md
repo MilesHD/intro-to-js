@@ -48,7 +48,24 @@ Case Study: AdSafe had to remove this as the only way to create a secure contain
 
 ### A better way to object: Power Constructor
 
-The power constructor is a pattern popularized by Douglas Crockford. It uses "parasitic inheritance", which is named for the Tarantula Hawk wasp who lays their eggs inside a living spider, so the offspring has an incubation chamber and food for hatching day. "Parasitic inheritance" is where you create an instance of a prototypically linked object in the first line of the constructor, and then augment and return that object.
+The power constructor is a pattern popularized by Douglas Crockford. It uses "parasitic inheritance", which is named for the Tarantula Hawk wasp who lays their eggs inside a living spider, so the offspring has an incubation chamber and food for hatching day. "Parasitic inheritance" is where you create an instance of an object from another constructor, and then augment the object with your properties and methods and return it.
+
+```
+function constructor(spec) {
+  var other = other_constructor(spec);
+  var method = function () {
+    // do work, access properties on spec, etc.
+  }
+  return Object.freeze({
+    method: method,
+    other: other
+  });
+}
+```
+
+This is a similar pattern to the module pattern, the revealing module pattern. We define all our private and public variables and methods, and return a forzen object with properties to "reveal" our public members. Freezing the object makes it immutable and gives it high integrity, so other programs cannot change it from under us. This gives us reliabilty in our object system that their interfaces cannot be corrupted.
+
+Options object is much more flexible than named parameters. You don't need to change your function signature to change what arguments are passed in. The mtehods close over variables it needs access to
 
 ## Exercise 1
 
