@@ -58,12 +58,11 @@ Closure is one of the most important breakthroughs in language design of all tim
 
 ### What is Closure?
 
-A closure is a function that has access to variables from another function's scope. This is often accomplished by creating a function inside a function. Even if the inner function has been returned, and is being used elsewhere, it has access to the variable it closed over.
+A closure is a function that has access to variables from another function's scope. This is often accomplished by creating a function inside a function. Even if the inner function has been returned, and is being used elsewhere, it still has access to any variables it "closes" over.
 
-When a function is called, an execution context is created, and its scope chain is created. THe activation object for the function is initialized with the values for `arguments` and any named arguments. The outer function's activation object is the 2nd object in the scope chain, and so on for all containing functions until the chain terminates with the global object. As the function executes, variables are looked up in the scope chain.
+This happens because when a function is called, a scope chain is created that is used to look up variables available to the function. When a function defined inside another function, it adds the containing function's scope into it's scope chain, so the containing function's variables are available to the inner function.
 
-Closure enables data hiding and encapsulating behavior. Closure in JavaScript is possible due to three concepts brought together for the first time: First Class Functions, Lexical Scope, and Nested Functions.
-
+### Closures in Action
 ```
 var globalArr = [1,2,3,4,5]
 function getItem(idx) {
@@ -92,10 +91,28 @@ function createClosure() {
 var x = createClosure();
 x.getItem(0); // 1
 ```
+### Module Pattern
 
-### Why should I care?
-### Ingredients
-### How to use?
+With the Module Pattern, we're able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope. What this results in is a reduction in the likelihood of our function names conflicting with other functions defined in additional scripts on the page.
+
+The module pattern starts with an immediately invoked function expression. This is a pattern itself, where you define an function and invoke it in one expression. Inside the IIFE, we declare private variables and functions, and return an object of public properties and methods that use the private variables. This works because the function immediately returns the object to the variable, but the functions in the object maintain access to the private members through closure.
+
+```
+var module = (function () {
+  var privateVar = 2;
+  var publicvar = privateVar + 5;
+  var privateFunction = function () {
+    console.log("Doing private stuff.");
+  }
+  return {
+    publicProperty: publicVar,
+    publicMethod: function () {
+      console.log("Inside a public method.");
+      privateFunction();
+    }
+  }
+}());
+```
 
 ## Exercise 2
 
