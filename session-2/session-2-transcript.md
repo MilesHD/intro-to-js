@@ -89,6 +89,8 @@ A closure is a function that has access to variables from another function's sco
 This happens because when a function is called, a scope chain is created that is used to look up variables available to the function. When a function defined inside another function, it adds the containing function's scope into it's scope chain, so the containing function's variables are available to the inner function.
 
 ### Closures in Action
+
+In our first example, we are defining an array in the global scope. While we are able to access the values from the array, global varaibles are at risk of being clobbered by another library. The browser loads all scripts on an HTML page into the global scope, so if another library you're loading also defines a `globalArr` as a global variabl, those names will clash and your program will break. Since there's no way of knowing when and how that collision will happen, just that's its possible, you have made an unreliable system.
 ```
 var globalArr = [1,2,3,4,5]
 function getItem(idx) {
@@ -97,6 +99,7 @@ function getItem(idx) {
 getItem(0) // 1
 ```
 
+Our next example is a little better, here we define `localArr` inside the function itself. This means that every time the function is called, the `localArr` is created and destroyed within memory. This is both inefficient and requires all initializtion for the array to be included in the function. 
 ```
 function getItem(idx) {
   var localArr = [1,2,3,4,5];
@@ -105,6 +108,7 @@ function getItem(idx) {
 getItem(0); // 1
 ```
 
+In this example, we finally have closure. Here we are defining `closuredArr` inside our createClosure function, and returning an object with a `getItem` method that closes over the `closuredArr`. Once `createClosure` is executed, the `closuredArr` array is created in memory and a reference saved within the `getItem` function. Even after the object has been returned, and is used somewhere else within your program, it retains access to the array.
 ```
 function createClosure() {
   var closuredArr = [1,2,3,4,5];
@@ -119,7 +123,7 @@ x.getItem(0); // 1
 ```
 ### Module Pattern
 
-With the Module Pattern, we're able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope. What this results in is a reduction in the likelihood of our function names conflicting with other functions defined in additional scripts on the page.
+One of the most popular patterns involving closure is the module pattern. The module pattern is an object creational pattern where we're able to include both public/private functions and variables inside a single object, thus shielding particular parts from the global scope. As we discussed, this results in is a reduction in the likelihood of our function names conflicting with other functions defined in additional scripts on the page.
 
 The module pattern starts with an immediately invoked function expression. This is a pattern itself, where you define an function and invoke it in one expression. Inside the IIFE, we declare private variables and functions, and return an object of public properties and methods that use the private variables. This works because the function immediately returns the object to the variable, but the functions in the object maintain access to the private members through closure.
 
@@ -142,25 +146,34 @@ var module = (function () {
 
 ## Exercise 2
 
-The Browser Object Model is the core of using JavaScript on the Web. The BOM provides objects that expose browser functionality independent of any web page content.
+Thus far we have been looking at specifically at the JavaScript langauge, but the JavaScript runtime alone doesn't do anything that interesting. JavaScript runtimes are implemented in a host environment, which provides the programming model and APIs to actually do stuff. The two host environments we'll be looking at in this class are the browser and node.js. Both environments are fundamentally the same model, but differ in what apis are available on the client vs. the server. Today, we'll be looking at the browser.
 
-At the core of the BOM is the window object, which represents an instance of the browser. This is the global object in JavaScript.
+### What is a browser?
 
-JavaScript runs in the browser, which can be thought of in four high level components: the javascript runtime, web apis, the callback queue, and the event loop.
+A web browser, at its simplest level, is an application that makes HTTP requests and renders their response. These HTTP requests go to servers like facebook.com or milesdickinson.com and returns an HTML document, associated stylesheets, JavaScript files, and other assets. The browser parses the HTML document into a node tree, which is a hierarchical representation of all the nodes in the HTML document. This node tree offers functionality for adding, modifying, and removing nodes, and is called the Document Object Model or (DOM). This is the API the browser provides for interacting with your page content.
 
-The JavaScript runtime is the software component that physically executes our JavaScript. It is a single-threaded model, meaning only one thing can be happening at a time, there are no threads. The runtime has two primary components, the heap and the stack. The heap handles memory allocation for objects, and the stack is a data structure that keeps of where we currently are in our program's execution. This is done by pushing and popping, like an array, execution contexts on and off the stack.
+Another API, The Browser Object Model (BOM) provides objects that expose browser functionality independent of any web page content.At the core of the BOM is the `window` object, which represents an instance of the browser, and is the global object in JavaScript. All global APIs are properties of the `window` object, such as `setTimeout` and `XMLHttpRequest`. The BOM also includes the `location` object, the `Navigator` object, the `screen` object, and the `history` object.
 
-JavaScript implementations have an event-driven, asynchronous programming model. We're used to synchronous code, where we write an operation, and that operation completes before we move on to the next statement. 
+### How is JavaScript executed?
 
-Web apis include the Browser Object Model (BOM) and the Document Object Model (DOM). WebApis push your callback onto the task callback queue.
+JavaScript runs in the browser, which can be thought of in four high level components: the JavaScript runtime, web apis, the callback queue, and the event loop.
 
-The callback queue is a data structure that receives callbacks invoked from an api. The callbacks wait in order int
+The JavaScript runtime is the software component that executes JavaScript code. The runtime has two primary components, the heap and the stack. The heap handles memory allocation for objects, and the stack is a data structure that keeps of where we currently are in our program's execution. This is done by pushing and popping, like an array, execution contexts on and off the stack.
 
-The event loop pushes the first callback from the callback queue on to the stack, if the stack is empty.
+JavaScript implementations have an single-threaded, event-driven, asynchronous programming model. That was a mouthful, so let's break down that statement. A single-threaded model means only one thing can happen at a time; there are no threads in JavaScript. This does not mean the browser is only capable of doing one thing at a time, just our JavaScript code. Event-driven means that our programs are interactive, meant to continue running and respond to user events, as opposed to a batch program, where they execute and exit upon completion. This is obviously a good thing since we're programming user interfaces, and a user interface that doesn't listen and respond to user events isn't very useful. But how do we handle a user moving his mouse while scrolling the page if JavaScript can only handle 1 thing at a time. That's where we need to leave the comfortable, synchronous programming model behind for an aynschronous one. We're used to synchronous code, where we write an operation, and that operation completes before we move on to the next statement. In asynchronous code, we make an API call and pass a function that is expected to be called by the API once it completes with the result passed in as an argument to the function. When you pass a function this way it is known as a "callback.". This model prevents the stack from being blocked, but is often a new and tricky paradigm for unfamiliar developers to adopt. But when you block the call stack, you can't do anything else, not scoll the page, click on a button, as far as your user is concerned, the application is broken. And they're right.
 
-blocking code is "code that is slow". Network calls, video processing, etc. The number one rule of event driven programming, don't block the stack. When you block the stack, you can't do anything else, not scoll the page, click on a button, as far as your user is concerned, the application is broken. And they're right.
+Let's say we have a function that calls the `setTimeout` web API, and passes in a callback that logs the string "Hello" to the console.
+```
+setTimeout(function () {
+  console.log('Hello');
+}, 1000);
+```
 
-The browser is more than just the runtime, they offer apis which can do tasks concurrently. 
+After 1000 milliseconds (1 second), this WebApi will push your callback onto the callback queue. The callback queue is a data structure that receives callbacks invoked from an api, and they wait until the stack is clear before being executed one by one. Functions currently executing on the stack can't be interrupted just because some API call is complete. That's why timers in JavaScript don't mean "this will happen after exactly 1 second" but "This will happen sometime after at least 1 second has passed", because the call stack must be empty before any function in the callback queue wil run.
+
+That brings us to the final piece of the puzzle, the event loop. The function of the event loop is pretty simple, if the stack is empty, pushes the first callback from the callback queue on to the stack.
+
+As we can see, the browser is more than just the JavaScript runtime, its and environment that offers apis which can do tasks concurrently. Why don't we see it in action with a tool called loupe.
 
 ```
 Call Stack
@@ -181,12 +194,6 @@ function printSquare(n) {
 printSquare(4);
 ```
 
-## What is a Brower?
-
-A web browser is an application that makes http requests and displays the response.
-
-### ECMAScript
-### How Code is Executed
 ### Browser APIs
 
 ## Exercise 3
