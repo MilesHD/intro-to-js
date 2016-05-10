@@ -196,4 +196,14 @@ printSquare(4);
 
 ### Browser APIs
 
+Now that we have a better idea of the browser works, let's take a look at some of the APIs you'll likely use when building applications.
+
+- console.log
+- XMLHttpRequest
+- setTimeout, setInterval
+- 3rd Party APIs
+  - jQuery
+  - Ajax Libraries
+- Frameworks
+
 ## Exercise 3
