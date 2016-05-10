@@ -116,7 +116,41 @@ var module = (function () {
 
 ## Exercise 2
 
+The Browser Object Model is the core of using JavaScript on the Web. The BOM provides objects that expose browser functionality independent of any web page content.
+
+At the core of the BOM is the window object, which represents an instance of the browser. This is the global object in JavaScript.
+
+JavaScript runs in the browser, which can be thought of in four high level components: the javascript runtime, web apis, the callback queue, and the event loop.
+
+The JavaScript runtime is the software component that physically executes our JavaScript. It is a single-threaded model, meaning only one thing can be happening at a time, there are no threads. The runtime has two primary components, the heap and the stack. The heap handles memory allocation for objects, and the stack is a data structure that keeps of where we currently are in our program's execution. This is done by pushing and popping, like an array, execution contexts on and off the stack.
+
+Web apis include the Browser Object Model (BOM) and the Document Object Model (DOM).
+
+The callback queue
+
+```
+Call Stack
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function square(n) {
+  return multiply(n, n)
+}
+
+function printSquare(n) {
+  var squared = square(n);
+  console.log(squared);
+}
+
+printSquare(4);
+```
+
 ## What is a Brower?
+
+A web browser is an application that makes http requests and displays the response.
+
 ### ECMAScript
 ### How Code is Executed
 ### Browser APIs
