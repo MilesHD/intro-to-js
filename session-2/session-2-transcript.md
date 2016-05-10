@@ -19,32 +19,40 @@
 
 ## Objects Re-Examined
 
-Last class, we left with an introduction to one of the most popular patterns for creating object systems in JavaScript, the Pseudoclassical pattern. Today, we're going to examine the pitfalls of this pattern, and examine a much simpler and more effective pattern for creating objects.
+Last class, we left with an introduction to one of the most popular patterns for creating object systems in JavaScript, the Pseudoclassical pattern. Today, we're going to understand how that pattern works under the hood, explore some of the advantages and disadvantages, and look another pattern that I perfer to use..
 
 ### Pitfalls of `this` and `new`
 
 The Pseudoclassical pattern contains 3 steps:
 1. Create a constructor function that assigns data to properties of a newly created object.
 2. Attach methods to the constructor function's prototype
-3. Create new objects by making a constructor call `new Constructor()`.
+3. Create new objects by making a constructor call `new Constructor()`. This is known as a constructor call, where a function call is preceded by a `new` keyword.
 
-A constructor call is when a function is called with the `new` keyword in front of it. When `new` is called, 4 things happen:
-1. A Therand new object is created
+To understand how this actually works, we need to examine what the `new` keyword is doing.
+
+When `new` is called, 4 things happen:
+1. A new object is created
 2. The newly created object is `[[Prototype]]` linked
 3. The newly created object is set as the `this` binding for the function call
 4. Unless the function returns its own alternate object, the newly created object is automatically returned.
 
-Problems with `new`
+This is a completely valid pattern, and used widely in the JavaScript community. It's advantages are that we leverage delegation through prototypes, and have better performance from reusing same functions defined on a prototype, rather than copies of a function locally defined in each object. But it has a number of drawbacks. If we forget to call our constructor function with the `new` keyword, our program will fail without warning. This can be mitigated, but by using this feature we are vulnerable to this class of error. Creating subtypes is also awkward in this pattern, we need to use `Object.create` to create an instance of the protoype we want to inherit from, and then set that object equal to the prototype property of our new constructor.
+```
+function Foo() { /* */ }
+function Bar() { /* */ }
 
-As we discussed last session , the `this ` keyword is dynamically assigned depending on how it is called, and is set by one of the four following rules:
+Bar.prototype = Object.create(Foo.prototype);
+```
+`new` isn't the only feature that can be problematic. As we discussed last session , the `this ` keyword is dynamically assigned depending on how it is called, and is set by one of the four following rules:
 1. `new` binding
 2. Explicit binding
 3. Implicit binding
 4. Default binding
 
-Working with `this` adds considerably to our cognitive load because we are not able to reason about the value by looking at how it is used within the function. There are also a number of security concerns with `this`, because since it is assigned dynamically and defaults to the global object in ES3, it is quite possible for crackers to exploit `this` and get access to the global object. Because of the potential confusion and security implications working with `this`, I no longer use it in my programs.
+Working with `this` adds considerably to our cognitive load because we are not able to reason about the value by looking at how it is used within the function, we have to examine how it is called, which could be in an entirely different file. There are also a number of security concerns with `this`, because since it is assigned dynamically and defaults to the global object in ES3, it is quite possible for crackers to exploit `this` and get access to the global object. Because of the potential confusion and security implications working with `this`, I no longer use it in my programs.
 
-Case Study: AdSafe had to remove this as the only way to create a secure container for doing mashups.
+So this begs the question, perhaps there's a cleaner, simpler model for object oriented programming.
+
 
 ### A better way to object: Power Constructor
 
@@ -53,9 +61,10 @@ The power constructor is a pattern popularized by Douglas Crockford. It uses "pa
 ```
 function constructor(spec) {
   var other = other_constructor(spec);
+  var privateVar;
   var method = function () {
     // do work, access properties on spec, etc.
-  }
+  };
   return Object.freeze({
     method: method,
     other: other
@@ -63,9 +72,9 @@ function constructor(spec) {
 }
 ```
 
-This is a similar pattern to the module pattern, the revealing module pattern. We define all our private and public variables and methods, and return a forzen object with properties to "reveal" our public members. Freezing the object makes it immutable and gives it high integrity, so other programs cannot change it from under us. This gives us reliabilty in our object system that their interfaces cannot be corrupted.
+In this pattern, we define all our private and public variables and methods, and return a forzen object with properties to "reveal" our public members. Freezing the object makes it immutable so other programs cannot change it from under us. This gives us integrity and reliabilty in our object system that their interfaces cannot be corrupted.
 
-Options object is much more flexible than named parameters. You don't need to change your function signature to change what arguments are passed in. The mtehods close over variables it needs access to
+Additionally, passing in an `options` object is more flexible than named parameters, and allows us to change our api later without changing the function signature. The methods close over variables it needs access to, effectivly hiding private data. We'll get into how that works when we discuss closure after exercise 1.
 
 ## Exercise 1
 
