@@ -17,7 +17,10 @@ runFirst();
 // Run first
 // Run second
 
-// 2. Write a function named 'that wraps the 'prompt' property on the 'window' object. The function should take a string in a parameter named 'message', and return a function that calls the 'prompt' function with the closured message parameter
+// 2. Write a function named 'wrappedAlert' that wraps the 'alert' property on the 'window' object. The function should take a string in a parameter named 'message', and return a function that calls the 'prompt' function with the closured message parameter.
 
+// Your Code Here
 
 // Verify
+var sayHi = wrappedAlert("Hey Hey Hey");
+sayHi(); // "Hey Hey Hey" in alert box
