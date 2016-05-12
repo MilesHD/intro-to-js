@@ -18,13 +18,13 @@ console.log(vehicle1.go()); // I'm Going!
 
 // 2. Using the Power Constructor Pattern, create a 'carConstructor' object constructor. The carConstructor should inherit from vehicleConstructor using 'parasitic inheritance'. 
 function carConstructor(spec) {
-  var vehicle = vehicleConstructor({color: spec.color});
+  var vehicle = vehicleConstructor(spec);
   var go = function () {
     vehicle.go();
     console.log("And i'm also a car.");
   };
   return Object.freeze({
-    color: spec.color,
+    color: vehicle.color,
     go: go
   });
 }
