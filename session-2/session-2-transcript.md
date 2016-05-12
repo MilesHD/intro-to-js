@@ -10,10 +10,9 @@
   - Module Pattern
 - Exercise 2
 - Browser Environment
-  - What is a Browser?
-  - ECMAScript
-  - How Code is Executed
-  - Browser APIs
+  - What is a browser?
+  - How is JavaScript executed?
+  - How to run JavaScript in the browser?
 - Exercise 3
 
 ## Objects Re-Examined
@@ -193,7 +192,7 @@ function printSquare(n) {
 printSquare(4);
 ```
 
-### How do you run JavaScript in the Browser?
+### How to run JavaScript in the Browser?
 
 The web was designed as a scientific retrieval system, but was hacked into an application devliery platform. An `html` file acts as the bootstrap for your application, where you can load in script and syling files. JavaScript is loaded through a `<script>` tag in the browser with the `src` attribute pointing to your JavaScript file. Although best practice forbids doing this, you could write code inline as well. Let's take a look in JSBin.
 
@@ -210,6 +209,6 @@ The web was designed as a scientific retrieval system, but was hacked into an ap
 
 ```
 
-Another effective way to protoype code is in your developer tools console. This can be found in the settings in chrome, under dev tools, also with a keyboard shortcut. You can inspect all the globals easily as well.
+Another effective way to protoype code is in your developer tools console. This can be found in the settings in chrome, under dev tools, also with a keyboard shortcut. You can inspect global variables as well.
 
 ## Exercise 3
