@@ -6,9 +6,8 @@
 - Exercise 1
 - Closure
   - What is Closure?
-  - Why should I Care?
-  - Ingredients
-  - How to use (Patterns)
+  - Closures in Action
+  - Module Pattern
 - Exercise 2
 - Browser Environment
   - What is a Browser?
@@ -194,16 +193,23 @@ function printSquare(n) {
 printSquare(4);
 ```
 
-### Browser APIs
+### How do you run JavaScript in the Browser?
 
-Now that we have a better idea of the browser works, let's take a look at some of the APIs you'll likely use when building applications.
+The web was designed as a scientific retrieval system, but was hacked into an application devliery platform. An `html` file acts as the bootstrap for your application, where you can load in script and syling files. JavaScript is loaded through a `<script>` tag in the browser with the `src` attribute pointing to your JavaScript file. Although best practice forbids doing this, you could write code inline as well. Let's take a look in JSBin.
 
-- console.log
-- XMLHttpRequest
-- setTimeout, setInterval
-- 3rd Party APIs
-  - jQuery
-  - Ajax Libraries
-- Frameworks
+```
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      console.log("Look at me! I'm JavaScript");
+    </script>
+  </body>
+</html>
+
+```
+
+Another effective way to protoype code is in your developer tools console. This can be found in the settings in chrome, under dev tools, also with a keyboard shortcut. You can inspect all the globals easily as well.
 
 ## Exercise 3
