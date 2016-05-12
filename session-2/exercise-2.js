@@ -6,7 +6,8 @@
 var p1 = closurePerson('Ester', '103');
 console.log(p1.getName(), p1.getAge());
 
-// 2. Using the module pattern, create an object named Person. Give that person private 'age' and 'distortion' properties, and a public 'age' property. The public 'age' property should be (age - distortion). The age and distortion values should come from an object you pass at the IIFE invocation.
+// 2. Using the module pattern, create an object named 'modulePerson'. Give that person private 'age' and 'distortion' properties, and a public 'age' property. The public 'age' property should be (age - distortion). 
+// The age and distortion values should come from an object you pass at the IIFE invocation.The IFFE should be called with the object, {age: 24, distortion: 2}.
 
 // Your Code Here
 
