@@ -33,8 +33,29 @@ I hope you all have had the chance to install Node.js, it will make participatin
 
 ## Asynchronous Programming
 
+Asynchronous programming is best understood by first contrasting it with synchronous programming. Synchronous programming is how we're used to programs running, one after the other, each statement completing before moving on to the next. Asynchronous programming, however, has at least two distinct parts of the program. A part that will run now, and parts that will run later. The parts the run later are the callbacks you pass to Asynchronous APIs, which do work without blocking the call stack, and pushing your callback with the result to the event queue upon completion. That's why Async is so difficult, our brains don't think that way, and it's not long before a long, asynchronous chain of operations becomes unreasonable to us.
+
 ### Callbacks
 
-## Thunks
+The fundamental mechanism for managing asynchronicity is the callback. A callback is a function you pass as an argument to an asynchronous API, and then is used to retrieve the value from the api and perform any other "program continuing" work. If you've worked with Node before, code like this may seem familar to you.
+```
+asyncOp1(function (value1) {
+  asyncOp2(function (value2) {
+    asyncOp3(function (value3) {
+      console.log("Got all values after all operations have completed!");
+    }
+  }
+}
+```
 
-## Promises
+This code suffers from two major problems that is known as "callback hell". And I'm not talking about nesting for indentation. All callbacks suffer from inversion of control and non-local, non-sequential reasoning.
+
+Inversion of control, in this context, means that I am relying on the `asyncOp1` not to call the callback I pass in too many times, too few times, etc. There is this implicit trust, where you are completely at the APIs mercy to treat your callback right. This may be a manageable probelm for async utilites you're calling within your own codebase, but what if a 3rd party library has a breakdown in their deployment process and deploys a feature that calls your callback every second for five seconds? Your app will be breaking and there's nothing you can do about it.
+
+Non-local, non-sequential reasonabilty of programs, means that you are not able 
+
+### Thunks
+
+Thunks are a pattern that enables us to factor time out of our code. 
+
+### Promises
