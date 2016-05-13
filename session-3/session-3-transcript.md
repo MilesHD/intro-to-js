@@ -50,7 +50,7 @@ asyncOp1(function (value1) {
 
 This code suffers from two major problems that is known as "callback hell". And I'm not talking about nesting for indentation. All callbacks suffer from inversion of control and non-local, non-sequential reasoning.
 
-Inversion of control, in this context, means that I am relying on the `asyncOp1` not to call the callback I pass in too many times, too few times, etc. There is this implicit trust, where you are completely at the APIs mercy to treat your callback right. This may be a manageable probelm for async utilites you're calling within your own codebase, but what if a 3rd party library has a breakdown in their deployment process and deploys a feature that calls your callback every second for five seconds? Your app will be breaking and there's nothing you can do about it.
+Inversion of control, in this context, means that I am relying on the `asyncOp1` not to call the callback I pass in too early, too late, too many times, too few times, etc. There is this implicit trust, where you are completely at the APIs mercy to treat your callback right. This may be a manageable probelm for async utilites you're calling within your own codebase, but what if a 3rd party library has a breakdown in their deployment process and deploys a feature that calls your callback every second for five seconds? Your app will be breaking and there's nothing you can do about it. 
 
 Non-local, non-sequential reasonabilty of programs, means that you are not able 
 
