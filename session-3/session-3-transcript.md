@@ -52,7 +52,7 @@ This code suffers from two major problems that is known as "callback hell". And 
 
 Inversion of control, in this context, means that I am relying on the `asyncOp1` not to call the callback I pass in too early, too late, too many times, too few times, etc. There is this implicit trust, where you are completely at the APIs mercy to treat your callback right. This may be a manageable probelm for async utilites you're calling within your own codebase, but what if a 3rd party library has a breakdown in their deployment process and deploys a feature that calls your callback every second for five seconds? Your app will be breaking and there's nothing you can do about it. 
 
-Non-local, non-sequential reasonabilty of programs, means that you are not able 
+Non-local, non-sequential reasonabilty of programs, means that you are not able to reason about callbacks. Our brains work in a synchronous, planning fashion, and it's at the moment where our brains divert from the way the JavaScript engine works is where bug's happen. So our goal is to learn how we can write programs that make sense to us.
 
 ### Thunks
 
