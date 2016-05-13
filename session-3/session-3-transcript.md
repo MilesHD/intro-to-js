@@ -27,8 +27,11 @@ Node.js is a c++ program, which provides bindings for JavaScript syntax that tra
 
 Node's built in functionality is immense, so i'm going to cover a couple of the most relevant and useful modules.
 
-The `fs` module is a wrapper around
+The `fs` module is a wrapper around standard filesystem calls. You can create, write, append to, change the modifiers, and anything else you can generally do with the filesystem.
 
+The `http` module provides functions for orchestrating HTTP clients and servers in your program.
+
+The `path` module provides utilities for handling and manipuling file paths.
 
 
 I hope you all have had the chance to install Node.js, it will make participating in exercise 1 more fun. 
