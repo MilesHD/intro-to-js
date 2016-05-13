@@ -58,6 +58,9 @@ Non-local, non-sequential reasonabilty of programs, means that you are not able 
 
 ### Thunks
 
-Thunks are a pattern that enables us to factor time out of our code. 
+Our first step in the right direction is looking for a way to eliminate that non-reasonability of using pure callbacks. A thunk, in a synchronous context, is a function that has everything it needs to return a value. You don't pass in any arguments, it's just a wrapper around a value. An asynchronous thunk is a pattern that enables us to factor time out of our code. We perform some async operation when we create the thunk, and return a function that retrieves the async result. The pattern uses closured state to coordinate between the two possible temporal execution paths of the thunk. Either the returned function will be called first, or the async operation will complete first. Once one path has been taken, we prepare the other operation to return the value once it completes.
+```
+
+```
 
 ### Promises
