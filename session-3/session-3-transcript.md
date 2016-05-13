@@ -94,4 +94,6 @@ th1(function (data1) {
 ```
 A thunk becomes a container around state, that I can pass around my program, and all I have to do the retrieve the state is call the function. And this, wrapper around a value, is the fundamental concept behind a promise.
 
+A thunk is still using callbacks, so they don't solve callback hell, but they do solve the problem of time being a factor in your program. We eliminate time as a complexing factor.
+
 ### Promises
